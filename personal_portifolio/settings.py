@@ -24,12 +24,10 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '+#-5$&8r5_=*3ukdnc%_$ari&^qzl@z32k+6st-c(*6lne3jdh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.getenv("IS_PRODUCTION"):
-    DEBUG = False
-    ALLOWED_HOSTS = ['lucascarrias.pythonanywhere.com']
-else:
-    DEBUG = True
-    ALLOWED_HOSTS = []
+
+DEBUG = False
+ALLOWED_HOSTS = ['lucascarrias.pythonanywhere.com']
+
 
 
 # Application definition
@@ -128,3 +126,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("No local_settings found. You must be on production.")
