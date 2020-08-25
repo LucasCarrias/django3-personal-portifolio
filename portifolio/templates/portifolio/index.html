@@ -24,7 +24,7 @@
         <div class="container row justify-content-center m-0">
             
             {% for project in projects %}
-                <div class="card col-md-6 col-lg-4 justify-content-around">
+                <div class="card col-md-6 col-lg-4 justify-content-around my-1">
                     <img src="{{ project.image.url }}" class="card-img-top pt-2" alt="{{ project.title }}" height=200 width=300>
                     <div class="card-body">
                         {% if project.url %}
