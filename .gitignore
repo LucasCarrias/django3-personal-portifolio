@@ -5,6 +5,7 @@
 .vscode/
 
 ### Django ###
+static/
 *.log
 *.pot
 *.pyc
