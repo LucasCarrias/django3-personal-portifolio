@@ -1,7 +1,7 @@
 {% extends 'portifolio/base.html' %}
 {% block content %}
     {% load static %}
-    <div class="container border">
+    <div class="container">
         <div class="col-md-8 float-md-right align-items-lg-center">
             <h1>Lucas Carrias<span class="d-none d-lg-inline"> Bruno</span></h1>
             <h5>Web Developer | Web Scraping</h5>
@@ -18,20 +18,30 @@
         <img id="avatar" class="rounded-2 img-fluid mx-auto my-2 d-block col-md-4 w-md-25" src="{% static "portifolio/me.jpeg" %}" alt="Me">
     </div>
 
-    <h2 class="my-4 text-center">Estes são os meus projetos:</h2>
-    <div class="container row">
-        {% for project in projects %}
-            <div class="card mx-auto my-2 col-md-6 col-lg-4 d-inline-block float-left">
-                <img src="{{ project.image.url }}" class="card-img-top pt-2" alt="{{ project.title }}" height=200 width=300>
-                <div class="card-body">
-                    <a href="{{ project.url }}">
-                        <h5 class="card-title">{{ project.title }}</h5>
-                        <p class="card-text">{{ project.description }}</p>
-                    </a>
-                </div>
-            </div>        
-        {% endfor %}
-    </div>    
+    <div class="container border py-2 my-4">
+        <h2 class="my-4 text-center">Meus Projetos:</h2>
+        <hr style="border-color: antiquewhite;">
+        <div class="container row justify-content-center m-0">
+            
+            {% for project in projects %}
+                <div class="card col-md-6 col-lg-4 justify-content-around">
+                    <img src="{{ project.image.url }}" class="card-img-top pt-2" alt="{{ project.title }}" height=200 width=300>
+                    <div class="card-body">
+                        {% if project.url %}
+                            <a href="{{ project.url }}">
+                                <h5 class="card-title">{{ project.title }}</h5>
+                                <p class="card-text">{{ project.description }}</p>
+                            </a>
+                        {% else %}
+                            <h5 class="card-title">{{ project.title }}</h5>
+                            <p class="card-text">{{ project.description }}</p>
+                        {% endif %}                        
+                    </div>
+                </div>        
+            {% endfor %}
+        </div> 
+    </div>
+       
 
 {% endblock content %}
 
